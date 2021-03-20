@@ -41,15 +41,6 @@ public class VehicleService
 		return repository.save(vehicle);
 	}
 
-	private void updateVehicleData(Vehicle newVehicle, Vehicle vehicle)
-	{
-		newVehicle.setName(vehicle.getName());
-		//brand model productionDate city high
-		newVehicle.setBrand(vehicle.getBrand());
-		newVehicle.setModel(vehicle.getModel());
-
-	}
-
 	public void delete(Integer vehicleId)
 	{
 		find(vehicleId);
@@ -59,7 +50,7 @@ public class VehicleService
 		}
 		catch (DataIntegrityViolationException e)
 		{
-			throw new DataIntegrityException("Não é possivel excluir uma categoria que possui produtos");
+			throw new DataIntegrityException("Is not possible delete this vehicle");
 		}
 	}
 
