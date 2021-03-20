@@ -15,19 +15,19 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 public class VehicleResource
 {
 	@Autowired
-	private VehicleService service;
+	private VehicleService vehicleService;
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public ResponseEntity<Vehicle> find(@PathVariable Integer id)
 	{
-		Vehicle vehicle = service.find(id);
+		Vehicle vehicle = vehicleService.find(id);
 		return ResponseEntity.ok().body(vehicle);
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<Void> insert(@Valid @RequestBody Vehicle vehicle)
 	{
-		Vehicle obj = service.insert(vehicle);
+		Vehicle obj = vehicleService.insert(vehicle);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
 			.buildAndExpand(obj.getId()).toUri();
 
@@ -37,7 +37,7 @@ public class VehicleResource
 	@RequestMapping(method = RequestMethod.GET)
 	public ResponseEntity<List<Vehicle>> findAll()
 	{
-		List<Vehicle> objList = service.findAll();
+		List<Vehicle> objList = vehicleService.findAll();
 
 		return ResponseEntity.ok().body(objList);
 	}
@@ -46,7 +46,15 @@ public class VehicleResource
 	public ResponseEntity<Void> update(@Valid @RequestBody Vehicle vehicle, @PathVariable Integer id)
 	{
 		vehicle.setId(id);
-		Vehicle obj = service.update(vehicle);
+		Vehicle obj = vehicleService.update(vehicle);
+
+		return ResponseEntity.noContent().build();
+	}
+
+	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+	public ResponseEntity<Void> delete(@PathVariable Integer id)
+	{
+		vehicleService.delete(id);
 
 		return ResponseEntity.noContent().build();
 	}
