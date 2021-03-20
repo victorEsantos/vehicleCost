@@ -1,6 +1,7 @@
 package com.cost.vehicle.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import java.util.Calendar;
 import java.util.Date;
 import javax.persistence.*;
 
@@ -77,6 +78,15 @@ public class Vehicle
 	public Date getProductionDate()
 	{
 		return productionDate;
+	}
+
+	public Integer getProductionYear()
+	{
+		Calendar calendar = Calendar.getInstance();
+		calendar.setTime(this.getProductionDate());
+		Integer productionYear =  calendar.get(Calendar.YEAR);
+
+		return productionYear;
 	}
 
 	public void setProductionDate(Date productionDate)

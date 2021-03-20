@@ -14,13 +14,13 @@ public class SimpleVehicleClone
 	private Double gasSpentTotal;
 	private Double moneySpentWithGas;
 
-	public SimpleVehicleClone(Vehicle v, Integer productionYear, Double gasSpentTotal, Double moneySpentWithGas)
+	public SimpleVehicleClone(Vehicle v, Double gasSpentTotal, Double moneySpentWithGas)
 	{
 		this.id = v.getId();
 		this.name = v.getName();
 		this.brand = v.getBrand();
 		this.model = v.getModel();
-		this.productionYear = productionYear;
+		this.productionYear = v.getProductionYear();
 		this.gasSpentTotal = gasSpentTotal;
 		this.moneySpentWithGas = moneySpentWithGas;
 	}

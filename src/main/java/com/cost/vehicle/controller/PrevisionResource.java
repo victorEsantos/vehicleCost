@@ -32,7 +32,7 @@ public class PrevisionResource
 		{
 			Calendar calendar = Calendar.getInstance();
 			calendar.setTime(vehicle.getProductionDate());
-			Integer productionYear =  calendar.get(Calendar.YEAR);
+
 
 			Double gasSpentOnHighway = highwayDistance / vehicle.getHighwayConsumption();
 			Double gasSpentOnCity = cityDistance / vehicle.getCityConsumption();
@@ -40,7 +40,7 @@ public class PrevisionResource
 			Double gasSpentTotal = getGasSpent(gasSpentOnHighway, gasSpentOnCity);
 			Double moneySpentWithGas = getMoneySpentWithGas(gasSpentOnHighway, gasSpentOnCity, gasPrice);
 
-			SimpleVehicleClone simpleVehicleClone = new SimpleVehicleClone(vehicle, productionYear, gasSpentTotal, moneySpentWithGas);
+			SimpleVehicleClone simpleVehicleClone = new SimpleVehicleClone(vehicle, gasSpentTotal, moneySpentWithGas);
 
 			vehicleCloneList.add(simpleVehicleClone);
 		}
