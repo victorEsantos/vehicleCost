@@ -34,8 +34,7 @@ public class VehiclesApplication  implements CommandLineRunner
 
 		Vehicle vehicleEx3 = new Vehicle(null, "Cruze", "Chevrolet", "Cruze-Sedan3.0",
 			sdf.parse("21/10/2020"), 8D, 9D);
-
-		//saveAll(Arrays.asList())
+		
 		vehicleRepository.saveAll(Arrays.asList(vehicleEx1, vehicleEx2, vehicleEx3));
 	}
 }
