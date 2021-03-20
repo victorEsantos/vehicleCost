@@ -5,15 +5,9 @@ import java.util.Comparator;
 
 public class SimpleVehicleSort implements Comparator<SimpleVehicleClone>
 {
-	Double highwayDistance;
-	Double cityDistance;
-	Double gasPrice;
 
-	public SimpleVehicleSort(Double highwayDistance, Double cityDistance, Double gasPrice)
+	public SimpleVehicleSort()
 	{
-		this.highwayDistance = highwayDistance;
-		this.cityDistance = cityDistance;
-		this.gasPrice = gasPrice;
 	}
 
 	@Override

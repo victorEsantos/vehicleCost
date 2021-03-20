@@ -45,7 +45,7 @@ public class PrevisionResource
 			vehicleCloneList.add(simpleVehicleClone);
 		}
 
-		SimpleVehicleSort comparator = new SimpleVehicleSort(highwayDistance, cityDistance, gasPrice);
+		SimpleVehicleSort comparator = new SimpleVehicleSort();
 		Collections.sort(vehicleCloneList, comparator);
 
 
