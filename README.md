@@ -12,13 +12,15 @@ Listagem dos veiculos mais economicos na estrada e cidade, baseado em km rodados
 ## Instalação
 
 - Clone este repositório
-- Certifique-se de usar JDK 11 e Maven 3.x
+- Certifique-se de usar JDK 11, Maven 3.x e Spring-Boot 2.4.4
 - Você pode buildar o projeto e executar os testes executando mvn clean package
 - Depois de buildado com sucesso, você pode executar o metodo main => ```VehiclesApplication.Main()```
 
 ## Usabilidade
 
-- Por se tratar de uma API rest, para usá-la é necessário construir um front que a consuma, ou utilizar plataformas de consumo de APIs, como o Postman e Insomnia
+- Projeto feito usando IntellijIDEA 2019
+- Por se tratar de uma API rest, para usá-la é necessário utilizar plataformas de consumo de APIs, como o Postman e Insomnia ou construir um front que a consuma
+- Banco de dados em memoria H2 utilizado e já configurado, porém conexão com sql-server já foi feita
 
 ### Rests:
 
