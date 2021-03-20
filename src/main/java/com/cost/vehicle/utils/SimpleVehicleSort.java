@@ -22,7 +22,10 @@ public class SimpleVehicleSort implements Comparator<SimpleVehicleClone>
 		cmp = moneySpentOnVehicle1.compareTo(moneySpentOnVehicle2);
 
 		//se tiver o mesmo gasto o desempate é feito pelo ID
-		cmp = cmp == 0 ? o1.getId().compareTo(o2.getId()) : cmp;
+		if(cmp == 0 && o1.getId() != null && o2.getId() != null)
+		{
+			cmp =  o1.getId().compareTo(o2.getId());
+		}
 
 		return cmp;
 	}
