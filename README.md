@@ -74,6 +74,10 @@ ex.:
 
 - Retorna uma lista de veiculos customizada ordenada do mais economico para o menos economico
 
+## Testes
+
+No pacote ``` test ``` temos a classe ``` SimpleVehicleSortTest.java ``` onde se encontra o metodo de teste da ordenação de veiculos.
+
 ## Contato
 
 Victor Santos – [@VictorSantos](https://www.linkedin.com/in/victor-dev-santos) – victor.eduardo.sntos@gmail.com
