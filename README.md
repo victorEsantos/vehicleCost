@@ -12,7 +12,7 @@ Listagem dos veiculos mais economicos na estrada e cidade, baseado em km rodados
 ## Instalação
 
 - Clone este repositório
-- Certifique-se de usar JDK 11 e Maven 3.x
+- Certifique-se de usar JDK 11, Maven 3.x e Spring-Boot 2.4.4
 - Você pode buildar o projeto e executar os testes executando mvn clean package
 - Depois de buildado com sucesso, você pode executar o metodo main => ```VehiclesApplication.Main()```
 
