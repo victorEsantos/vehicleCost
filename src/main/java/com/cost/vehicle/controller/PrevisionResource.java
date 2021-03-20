@@ -3,8 +3,9 @@ package com.cost.vehicle.controller;
 import com.cost.vehicle.entity.Vehicle;
 import com.cost.vehicle.service.VehicleService;
 import com.cost.vehicle.utils.SimpleVehicleClone;
-import com.cost.vehicle.utils.VehicleSort;
+import com.cost.vehicle.utils.SimpleVehicleSort;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collections;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,17 +30,42 @@ public class PrevisionResource
 
 		for(Vehicle vehicle : vehicleList)
 		{
-			SimpleVehicleClone simpleVehicleClone = new SimpleVehicleClone(vehicle, highwayDistance, cityDistance, gasPrice);
+			Calendar calendar = Calendar.getInstance();
+			calendar.setTime(vehicle.getProductionDate());
+			Integer productionYear =  calendar.get(Calendar.YEAR);
 
+			Double gasSpentOnHighway = highwayDistance / vehicle.getHighwayConsumption();
+			Double gasSpentOnCity = cityDistance / vehicle.getCityConsumption();
 
+			Double gasSpentTotal = getGasSpent(gasSpentOnHighway, gasSpentOnCity);
+			Double moneySpentWithGas = getMoneySpentWithGas(gasSpentOnHighway, gasSpentOnCity, gasPrice);
+
+			SimpleVehicleClone simpleVehicleClone = new SimpleVehicleClone(vehicle, productionYear, gasSpentTotal, moneySpentWithGas);
 
 			vehicleCloneList.add(simpleVehicleClone);
 		}
 
-		VehicleSort comparator = new VehicleSort(highwayDistance, cityDistance, gasPrice);
-		Collections.sort(vehicleList, comparator);
+		SimpleVehicleSort comparator = new SimpleVehicleSort(highwayDistance, cityDistance, gasPrice);
+		Collections.sort(vehicleCloneList, comparator);
 
 
 		return ResponseEntity.ok().body(vehicleCloneList);
+	}
+
+	private Double getMoneySpentWithGas(Double gasSpentOnHighway, Double gasSpentOnCity, Double gasPrice)
+	{
+
+		Double moneySpentGasInHighway = gasSpentOnHighway * gasPrice;
+		Double moneySpentGasInCity = gasSpentOnCity * gasPrice;
+		Double moneySpentWithGas = moneySpentGasInCity + moneySpentGasInHighway;
+
+		return moneySpentWithGas;
+	}
+
+	private Double getGasSpent(Double gasSpentOnHighway, Double gasSpentOnCity)
+	{
+		Double gasSpentTotal = gasSpentOnCity + gasSpentOnHighway;
+
+		return gasSpentTotal;
 	}
 }

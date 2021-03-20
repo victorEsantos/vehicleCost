@@ -1,49 +1,28 @@
 package com.cost.vehicle.utils;
 
 import com.cost.vehicle.entity.Vehicle;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 public class SimpleVehicleClone
 {
+	@JsonIgnore
 	private Integer id;
 	private String name;
 	private String brand;
 	private String model;
-
-	private int productionYear;
+	private Integer productionYear;
 	private Double gasSpentTotal;
 	private Double moneySpentWithGas;
 
-	//FIX-ME regra de negócio no construtor não está legal!
-	//FIX-ME regra de negócio no construtor não está legal!
-	//FIX-ME regra de negócio no construtor não está legal!
-	//FIX-ME regra de negócio no construtor não está legal!
-	//FIX-ME regra de negócio no construtor não está legal!
-	public SimpleVehicleClone(Vehicle v, Double highwayDistance, Double cityDistance, Double gasPrice)
+	public SimpleVehicleClone(Vehicle v, Integer productionYear, Double gasSpentTotal, Double moneySpentWithGas)
 	{
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy");
 		this.id = v.getId();
 		this.name = v.getName();
 		this.brand = v.getBrand();
 		this.model = v.getModel();
-
-		Calendar calendar = Calendar.getInstance();
-		calendar.setTime(v.getProductionDate());
-		this.productionYear =  calendar.get(Calendar.YEAR);
-
-
-		Double highwayConsumption = v.getHighwayConsumption();
-		Double gasSpentOnHighway = highwayDistance / highwayConsumption;
-		Double moneySpentGasInHighway = gasSpentOnHighway * gasPrice;
-
-		Double cityConsumption = v.getCityConsumption();
-		Double gasSpentOnCity = cityDistance / cityConsumption;
-		Double moneySpentGasInCity = gasSpentOnCity * gasPrice;
-
-
-		this.gasSpentTotal = gasSpentOnCity + gasSpentOnHighway;
-		this.moneySpentWithGas = moneySpentGasInCity + moneySpentGasInHighway;
+		this.productionYear = productionYear;
+		this.gasSpentTotal = gasSpentTotal;
+		this.moneySpentWithGas = moneySpentWithGas;
 	}
 
 	public Integer getId()
