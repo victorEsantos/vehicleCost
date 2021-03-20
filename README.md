@@ -18,6 +18,7 @@ Listagem dos veiculos mais economicos na estrada e cidade, baseado em km rodados
 
 ## Usabilidade
 
+- Projeto feito usando IntellijIDEA 2019
 - Por se tratar de uma API rest, para usá-la é necessário construir um front que a consuma, ou utilizar plataformas de consumo de APIs, como o Postman e Insomnia
 
 ### Rests:
